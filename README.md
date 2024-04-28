@@ -1,1 +1,1 @@
-# sorting_algorithms
+# Learning and collaborating on sorting_algorithms
