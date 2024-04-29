@@ -2,20 +2,34 @@
 #include "sort.h"
 
 /**
- * swap - swaps two variables' values
- * @a: first variable
- * @b: second variable
+ * selection_sort - sorts an array using selection sort algorithm
+ * @array: array to be sorted
+ * @size: number of elements in array
  *
  * Return: void
  */
 
-void swap(int *a, int *b)
+void selection_sort(int *array, size_t size)
 {
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
+	size_t i, idx;
 
+	if (size < 2)
+		return;
+
+	for (i = 0; i < (size - 1); ++i)
+	{
+		idx = min(array, i, size);
+
+		if (idx != i)
+		{
+			int tmp = array[i];
+
+			array[i] = array[idx];
+			array[idx] = tmp;
+			print_array(array, size);
+		}
+	}
+}
 
 /**
  * min - find the index of the smallest element in an array
@@ -43,24 +57,4 @@ int min(int arr[], int start, int n)
 	}
 
 	return (idx);
-}
-
-/**
- * selection_sort - sorts an array using selection sort algorithm
- * @array: array to be sorted
- * @size: number of elements in array
- *
- * Return: void
- */
-
-void selection_sort(int *array, size_t size)
-{
-	size_t i, idx;
-
-	for (i = 0; i < (size - 1); ++i)
-	{
-		idx = min(array, i, size);
-		swap(&array[i], &array[idx]);
-		print_array(array, size);
-	}
 }
