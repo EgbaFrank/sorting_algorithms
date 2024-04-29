@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "sort.h"
 
 /**
  * swap - swaps two variables' values
@@ -60,5 +61,6 @@ void selection_sort(int *array, size_t size)
 	{
 		idx = min(array, i, size);
 		swap(&array[i], &array[idx]);
+		print_array(array, size);
 	}
 }
