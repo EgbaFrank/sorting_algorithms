@@ -10,7 +10,7 @@
 
 void quick_sort(int *array, size_t size)
 {
-	if (size < 2)
+	if (array == NULL || size == 0)
 		return;
 
 	static_print(array, &size);
@@ -27,15 +27,15 @@ void quick_sort(int *array, size_t size)
 
 void q_sort(int *array, size_t size)
 {
-	int pivot;
+	int pivot; /* Index of the pivot */
 
 	if (size < 2)
 		return;
 
 	pivot = partition(array, size);
 
-	q_sort(array, pivot);
-	q_sort(&array[pivot + 1], size - pivot - 1);
+	q_sort(array, pivot); /* partition left half */
+	q_sort(&array[pivot + 1], size - pivot - 1); /* and right half */
 }
 
 /**
@@ -79,7 +79,7 @@ void swap(int *i, int *j)
 {
 	int temp;
 
-	if (i == j)
+	if (*i == *j)
 		return;
 
 	temp = *i;
